@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = ".;pb";
+
+service Master {
+    rpc SendHeartbeat(stream Heartbeat) returns (Empty);
+}
+
+message Heartbeat {
+    int32 port = 1;
+}
+
+message Empty {}
