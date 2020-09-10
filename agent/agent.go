@@ -35,29 +35,22 @@ type Agent struct {
 	socket string
 }
 
-func NewLocalAgent(ml pb.AgentServer, logger logger.Logger) (*Agent, error) {
-	a := &Agent{
-		ml:     ml,
-		logger: logger,
-	}
-	return a, nil
-}
-
-func NewAgent(opts *Options, ml pb.AgentServer, logger logger.Logger) (*Agent, error) {
+func NewAgent(opts *Options, logger logger.Logger) *Agent {
 	a := &Agent{
 		route:       opts.Route,
 		clusterPort: opts.ClusterPort,
 		socket:      opts.Socket,
 		logger:      logger,
-		ml:          ml,
 	}
-	return a, nil
+	return a
 }
 
-func (a *Agent) SetMetricLogger(ml pb.AgentServer) {
+func (a *Agent) SetMetricLogger(ml pb.AgentServer) *Agent {
 	a.mu.Lock()
 	a.ml = ml
 	a.mu.Unlock()
+
+	return a
 }
 
 // StartSocketServer setup an rpc server over agent unix socket

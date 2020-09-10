@@ -84,4 +84,7 @@ func main() {
 
 		return
 	}
+
+	if opts.Mode == Agent {
+	}
 }

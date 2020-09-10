@@ -39,8 +39,8 @@ func newAgent(t *testing.T, opts *Options) *Agent {
 	logger := logger.NewNopLogger()
 	ml := newNopMetricLog()
 
-	a, err := NewAgent(opts, ml, logger)
-	assert.Nil(t, err)
+	a := NewAgent(opts, logger)
+	a.SetMetricLogger(ml)
 
 	return a
 }
@@ -53,8 +53,8 @@ func TestNewAgent(t *testing.T) {
 	logger := logger.NewNopLogger()
 	ml := newNopMetricLog()
 
-	_, err := NewAgent(opts, ml, logger)
-	assert.Nil(t, err)
+	a := NewAgent(opts, logger)
+	a.SetMetricLogger(ml)
 }
 
 func TestStartAgent(t *testing.T) {
