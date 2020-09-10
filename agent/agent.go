@@ -36,12 +36,16 @@ type Agent struct {
 }
 
 func NewAgent(opts *Options, logger logger.Logger) *Agent {
+	agentSocket := fmt.Sprintf("/tmp/gobench-agentsocket-%d", os.Getpid())
+
 	a := &Agent{
 		route:       opts.Route,
 		clusterPort: opts.ClusterPort,
-		socket:      opts.Socket,
 		logger:      logger,
 	}
+
+	a.socket = agentSocket
+
 	return a
 }
 

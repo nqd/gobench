@@ -84,9 +84,7 @@ func NewMaster(opts *Options, logger logger.Logger) (m *Master, err error) {
 	m.isScheduled = true // by default
 
 	// metric logger handler of local agent is the master
-	agentSocket := fmt.Sprintf("/tmp/gobench-agentsocket-%d", os.Getpid())
-	la := agent.
-		NewAgent(&agent.Options{Socket: agentSocket}, logger)
+	la := agent.NewAgent(&agent.Options{}, logger)
 	la.SetMetricLogger(m)
 
 	m.la = la

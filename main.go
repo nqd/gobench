@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/gobench-io/gobench/agent"
 	"github.com/gobench-io/gobench/logger"
 	"github.com/gobench-io/gobench/master"
 	"github.com/gobench-io/gobench/web"
@@ -86,5 +87,10 @@ func main() {
 	}
 
 	if opts.Mode == Agent {
+		agent.NewAgent(&agent.Options{
+			Route:       opts.Route,
+			ClusterPort: opts.ClusterPort,
+		}, logger)
+		// a.SetMetricLogger()
 	}
 }
