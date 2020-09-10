@@ -57,6 +57,12 @@ func (a *Agent) SetMetricLogger(ml pb.AgentServer) *Agent {
 	return a
 }
 
+// StartProxy setup the proxy for executor client and master server
+// by create master rpc client
+func (a *Agent) StartProxy() error {
+	rc := pb.NewAgentClient(conn)
+}
+
 // StartSocketServer setup an rpc server over agent unix socket
 // the function runs the server in a separate routine
 func (a *Agent) StartSocketServer() error {
@@ -72,6 +78,11 @@ func (a *Agent) StartSocketServer() error {
 
 	go s.Serve(l)
 
+	return nil
+}
+
+// StartHTTPServer setup rpc server for cluster communication
+func (a *Agent) StartHTTPServer() error {
 	return nil
 }
 
