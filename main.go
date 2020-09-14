@@ -92,5 +92,7 @@ func main() {
 			ClusterPort: opts.ClusterPort,
 		}, logger)
 		// a.SetMetricLogger()
+
+		select {}
 	}
 }

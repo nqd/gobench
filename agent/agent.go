@@ -36,14 +36,13 @@ type Agent struct {
 }
 
 func NewAgent(opts *Options, logger logger.Logger) *Agent {
-	agentSocket := fmt.Sprintf("/tmp/gobench-agentsocket-%d", os.Getpid())
-
 	a := &Agent{
 		route:       opts.Route,
 		clusterPort: opts.ClusterPort,
 		logger:      logger,
 	}
 
+	agentSocket := fmt.Sprintf("/tmp/gobench-agentsocket-%d", os.Getpid())
 	a.socket = agentSocket
 
 	return a
@@ -60,7 +59,8 @@ func (a *Agent) SetMetricLogger(ml pb.AgentServer) *Agent {
 // StartProxy setup the proxy for executor client and master server
 // by create master rpc client
 func (a *Agent) StartProxy() error {
-	rc := pb.NewAgentClient(conn)
+	// rc := pb.NewAgentClient(conn)
+	return nil
 }
 
 // StartSocketServer setup an rpc server over agent unix socket
