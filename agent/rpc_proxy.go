@@ -13,10 +13,6 @@ func (a *Agent) Counter(ctx context.Context, req *pb.CounterReq) (*pb.CounterRes
 func (a *Agent) Histogram(ctx context.Context, req *pb.HistogramReq) (*pb.HistogramRes, error) {
 	return nil, nil
 }
-
-func (a *Agent) Histogram(ctx context.Context, req *pb.HistogramReq) (*pb.HistogramRes, error) {
-	return nil, nil
-}
 func (a *Agent) Gauge(ctx context.Context, req *pb.GaugeReq) (*pb.GaugeRes, error) {
 	return nil, nil
 }

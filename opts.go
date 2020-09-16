@@ -71,7 +71,7 @@ func ConfigureOptions(fs *flag.FlagSet, args []string, printVersion, printHelp f
 	fs.StringVar(&dbPath, "db", "", "Name of the database.")
 
 	// agent
-	fs.IntVar(&clusterPort, "clusterPort", DEFAULT_CLUSTER_PORT, "Cluster port to solicit and connect.")
+	fs.IntVar(&clusterPort, "cluster-port", DEFAULT_CLUSTER_PORT, "Cluster port to solicit and connect.")
 
 	// master + agent
 	fs.StringVar(&route, "route", "", "Master address to solicit routes.")

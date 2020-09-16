@@ -87,11 +87,13 @@ func main() {
 	}
 
 	if opts.Mode == Agent {
-		agent.NewAgent(&agent.Options{
+		a := agent.NewAgent(&agent.Options{
 			Route:       opts.Route,
 			ClusterPort: opts.ClusterPort,
 		}, logger)
 		// a.SetMetricLogger()
+
+		go a.Heartbeat()
 
 		select {}
 	}

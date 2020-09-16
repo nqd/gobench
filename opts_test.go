@@ -102,7 +102,7 @@ func TestOptions(t *testing.T) {
 		assert.Equal(t, DEFAULT_CLUSTER_PORT, opts.ClusterPort)
 
 		opts = mustNotFail([]string{"me", "--mode", "agent",
-			"--route", "abc.xyz:1234", "--clusterPort", "4567"})
+			"--route", "abc.xyz:1234", "--cluster-port", "4567"})
 		assert.Equal(t, 4567, opts.ClusterPort)
 	})
 }
