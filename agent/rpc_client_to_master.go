@@ -8,7 +8,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-func (a *Agent) heartbeat() {
+func (a *Agent) Heartbeat() {
 	for {
 		err := a.doHeartbeat(20 * time.Second)
 		if err != nil {
