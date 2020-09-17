@@ -47,6 +47,7 @@ func (a *Agent) doHeartbeat(hi time.Duration) error {
 }
 
 func (a *Agent) sendOneHeartbeat(stream pb.Master_SendHeartbeatClient) error {
+	a.logger.Infow("send one heartbeat")
 	beat := &pb.Heartbeat{
 		Port: int32(a.clusterPort),
 	}
