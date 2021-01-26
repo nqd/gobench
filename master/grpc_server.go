@@ -11,7 +11,7 @@ import (
 func (m *Master) startGrpcServer() error {
 	addr := fmt.Sprintf(":%d", m.clusterPort)
 
-	m.logger.Infow("start gRPC server at", "address", addr)
+	m.logger.Infow("starting gRPC server", "address", addr)
 
 	l, err := net.Listen("tcp", addr)
 	if err != nil {

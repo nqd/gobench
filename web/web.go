@@ -165,11 +165,11 @@ func newHandler(s *master.Master, adminPassword string, logger logger.Logger) *h
 func Serve(s *master.Master, adminPassword string, logger logger.Logger) {
 	h := newHandler(s, adminPassword, logger)
 
-	portS := fmt.Sprintf(":%d", s.WebPort())
+	addr := fmt.Sprintf(":%d", s.WebPort())
 
-	logger.Infow("web server start", "port", portS)
+	logger.Infow("starting HTTP server", "address", addr)
 
-	if err := http.ListenAndServe(portS, h.r); err != nil {
-		logger.Fatalw("failed start HTTP server", "port", portS, "err", err)
+	if err := http.ListenAndServe(addr, h.r); err != nil {
+		logger.Fatalw("failed start HTTP server", "port", addr, "err", err)
 	}
 }
