@@ -96,6 +96,9 @@ func TestOptions(t *testing.T) {
 
 		opts = mustNotFail([]string{"me", "--admin-password", "apassword"})
 		assert.Equal(t, opts.AdminPassword, "apassword")
+
+		opts = mustNotFail([]string{"me", "--cluster-port", "1123"})
+		assert.Equal(t, 1123, opts.ClusterPort)
 	})
 
 	t.Run("agent options", func(t *testing.T) {

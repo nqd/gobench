@@ -70,9 +70,10 @@ func main() {
 
 	if opts.Mode == Master {
 		m, err := master.NewMaster(&master.Options{
-			Port:    opts.Port,
-			Program: opts.Program,
-			HomeDir: opts.Dir,
+			Port:        opts.Port,
+			Program:     opts.Program,
+			HomeDir:     opts.Dir,
+			ClusterPort: opts.ClusterPort,
 		}, logger)
 		if err != nil {
 			printAndDie(fmt.Sprintf("%s: %s", exe, err))

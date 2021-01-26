@@ -74,10 +74,11 @@ type job struct {
 }
 
 type Options struct {
-	Port    int
-	Addr    string
-	Program string
-	HomeDir string
+	Port        int
+	Addr        string
+	Program     string
+	HomeDir     string
+	ClusterPort int
 }
 
 // NewMaster will setup a new master struct given options and logger.
@@ -98,13 +99,14 @@ func NewMaster(opts *Options, logger logger.Logger) (m *Master, err error) {
 	}
 
 	m = &Master{
-		id:        id.String(),
-		version:   gitTag,
-		gitCommit: gitCommit,
-		goVersion: runtime.Version(),
-		hostname:  hostname,
-		addr:      opts.Addr,
-		port:      opts.Port,
+		id:          id.String(),
+		version:     gitTag,
+		gitCommit:   gitCommit,
+		goVersion:   runtime.Version(),
+		hostname:    hostname,
+		addr:        opts.Addr,
+		port:        opts.Port,
+		clusterPort: opts.ClusterPort,
 
 		homeDir: opts.HomeDir,
 		logger:  logger,
