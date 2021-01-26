@@ -154,7 +154,13 @@ func (m *Master) Start() (err error) {
 	}
 
 	// start the local agent socket server that communicate with local executor
-	err = m.la.StartSocketServer()
+	if err = m.la.StartSocketServer(); err != nil {
+		return
+	}
+
+	if err = m.startGrpcServer(); err != nil {
+		return
+	}
 
 	return
 }
